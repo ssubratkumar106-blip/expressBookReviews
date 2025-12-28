@@ -90,6 +90,18 @@ public_users.get('/async/books', async (req, res) => {
     res.status(500).json({ message: "Error fetching books" });
   }
 });
+/**
+ * TASK 11: Get book details based on ISBN using ASYNC / AWAIT with AXIOS
+ */
+public_users.get('/async/isbn/:isbn', async (req, res) => {
+  try {
+    const isbn = req.params.isbn;
+    const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching book by ISBN" });
+  }
+});
 
 
 
