@@ -102,6 +102,20 @@ public_users.get('/async/isbn/:isbn', async (req, res) => {
     res.status(500).json({ message: "Error fetching book by ISBN" });
   }
 });
+/**
+ * TASK 12: Get book details based on Author using ASYNC / AWAIT with AXIOS
+ */
+public_users.get('/async/author/:author', async (req, res) => {
+  try {
+    const author = req.params.author;
+    const response = await axios.get(
+      `http://localhost:5000/author/${author}`
+    );
+    res.status(200).json(response.data);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching books by author" });
+  }
+});
 
 
 
